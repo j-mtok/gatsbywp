@@ -14,7 +14,7 @@ export default class IndexPage extends React.Component {
     <>
     <div className="testclassname">blog.js test 最上層</div>
       <Layout>
-      	<div className="testclassname2">blog.js test2 Layoutのすぐあとと</div>
+      	<div className="testclassname2">blog.js test2 Layoutのすぐあとtest</div>
         <PostList posts={posts} title="Latest posts" />
         <Pagination pageContext={pageContext} pathPrefix="/" />
       </Layout>
