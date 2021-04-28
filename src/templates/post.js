@@ -17,14 +17,13 @@ export const BlogPostTemplate = ({
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+            <h1 className="title has-text-weight-bold is-bold-light">
               {title}
             </h1>
             <div dangerouslySetInnerHTML={{ __html: content }} />
             <div style={{ marginTop: `4rem` }}>
               <p>
-                {date} - posted by{' '}
-                <Link to={`/author/${author.slug}`}>{author.name}</Link>
+                {date}
               </p>
               {categories && categories.length ? (
                 <div>
@@ -96,7 +95,7 @@ export const pageQuery = graphql`
     id
     slug
     content
-    date(formatString: "MMMM DD, YYYY")
+    date(formatString: "YYYY年MM月DD日")
     title
   }
   query BlogPostByID($id: String!) {
@@ -105,7 +104,7 @@ export const pageQuery = graphql`
       title
       slug
       content
-      date(formatString: "MMMM DD, YYYY")
+      date(formatString: "YYYY年MM月DD日")
       categories {
         name
         slug

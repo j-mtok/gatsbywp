@@ -12,13 +12,11 @@ export default class IndexPage extends React.Component {
 
     return (
     <>
-    <div className="testclassname">blog.js test 最上層</div>
       <Layout>
-      	<div className="testclassname2">blog.js test2 Layoutのすぐあとtest</div>
-        <PostList posts={posts} title="Latest posts" />
+        <PostList posts={posts} />
         <Pagination pageContext={pageContext} pathPrefix="/" />
       </Layout>
-      </>
+    </>
     )
   }
 }

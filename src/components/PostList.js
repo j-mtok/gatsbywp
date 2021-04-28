@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import dayjs from "dayjs"
 
 export default class IndexPage extends React.Component {
   render() {
@@ -15,20 +16,17 @@ export default class IndexPage extends React.Component {
           {posts.map(({ node: post }) => (
             <div
               className="content"
-              style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
+              style={{ border: '1px solid #eaecee', padding: '0.5em 1em' }}
               key={post.id}
             >
+              <small>
+                {post.date}
+              </small>
               <p>
                 <Link className="has-text-primary" to={post.slug}>
                   {post.title}
                 </Link>
-                <span> &bull; </span>
-                <small>
-                  {post.date} - posted by{' '}
-                  <Link to={`/author/${post.author.slug}`}>
-                    {post.author.name}
-                  </Link>
-                </small>
+
               </p>
               <div>
                 <div
@@ -65,7 +63,7 @@ export const pageQuery = graphql`
         wordpress_48
       }
     }
-    date(formatString: "MMMM DD, YYYY")
+    date(formatString: "YYYY年MM月DD日")
     slug
   }
 `
