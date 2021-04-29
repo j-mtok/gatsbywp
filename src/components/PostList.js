@@ -22,6 +22,9 @@ export default class IndexPage extends React.Component {
               <small>
                 {post.date}
               </small>
+              <div>
+                <img src={post.featured_media.source_url} />
+              </div>
               <p>
                 <Link className="has-text-primary" to={post.slug}>
                   {post.title}
@@ -65,5 +68,8 @@ export const pageQuery = graphql`
     }
     date(formatString: "YYYY年MM月DD日")
     slug
+    featured_media {
+      source_url
+    }
   }
 `

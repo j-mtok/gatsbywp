@@ -11,6 +11,7 @@ export const BlogPostTemplate = ({
   title,
   date,
   author,
+  featured_media
 }) => {
   return (
     <section className="section">
@@ -20,6 +21,7 @@ export const BlogPostTemplate = ({
             <h1 className="title has-text-weight-bold is-bold-light">
               {title}
             </h1>
+            <img src={featured_media.source_url} />
             <div dangerouslySetInnerHTML={{ __html: content }} />
             <div style={{ marginTop: `4rem` }}>
               <p>
@@ -77,6 +79,7 @@ const BlogPost = ({ data }) => {
         title={post.title}
         date={post.date}
         author={post.author}
+        featured_media={post.featured_media}
       />
     </Layout>
   )
@@ -97,6 +100,9 @@ export const pageQuery = graphql`
     content
     date(formatString: "YYYY年MM月DD日")
     title
+    featured_media {
+      source_url
+    }
   }
   query BlogPostByID($id: String!) {
     wordpressPost(id: { eq: $id }) {
@@ -116,6 +122,9 @@ export const pageQuery = graphql`
       author {
         name
         slug
+      }
+      featured_media {
+        source_url
       }
     }
   }
