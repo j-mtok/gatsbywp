@@ -38,7 +38,7 @@ export default class IndexPage extends React.Component {
                   }}
                 />
                 <Link className="button is-small" to={post.slug}>
-                  Keep Reading →
+                  もっと読む
                 </Link>
               </div>
             </div>
