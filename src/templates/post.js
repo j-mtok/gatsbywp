@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
+import Img from "gatsby-image"
 import Layout from '../components/Layout'
 import '../components/youtube.css'
 
@@ -22,7 +23,7 @@ export const BlogPostTemplate = ({
             <h1 className="title has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            <img src={featured_media.source_url} />
+            <Img fluid={featured_media.localFile.childImageSharp.fluid} />
             <div dangerouslySetInnerHTML={{ __html: content }} />
             <div style={{ marginTop: `4rem` }}>
               <p>
@@ -102,7 +103,13 @@ export const pageQuery = graphql`
     date(formatString: "YYYY年MM月DD日")
     title
     featured_media {
-      source_url
+      localFile {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   }
   query BlogPostByID($id: String!) {
@@ -125,7 +132,13 @@ export const pageQuery = graphql`
         slug
       }
       featured_media {
-        source_url
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 1000) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

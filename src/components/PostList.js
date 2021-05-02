@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import dayjs from "dayjs"
+import Img from "gatsby-image"
 
 export default class IndexPage extends React.Component {
   render() {
@@ -23,7 +24,7 @@ export default class IndexPage extends React.Component {
                 {post.date}
               </small>
               <div>
-                <img src={post.featured_media.source_url} />
+                <Img fluid={post.featured_media.localFile.childImageSharp.fluid} />
               </div>
               <p>
                 <Link className="has-text-primary" to={post.slug}>
@@ -69,7 +70,13 @@ export const pageQuery = graphql`
     date(formatString: "YYYY年MM月DD日")
     slug
     featured_media {
-      source_url
+      localFile {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   }
 `
