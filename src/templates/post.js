@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Img from "gatsby-image"
 import Layout from '../components/Layout'
-import '../components/youtube.css'
+import '../components/style.css'
 
 export const BlogPostTemplate = ({
   content,
