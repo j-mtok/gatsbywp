@@ -102,6 +102,7 @@
   list-style: none;
 }
 
+/* ハンバーガーメニュー カテゴリに記事があったとき リンク有 */
 .hamburgermenu-nav ul li a {
   display: block;
   width: 100%;
@@ -124,3 +125,16 @@
   right: 11px;
   top: 16px;
 }
+
+/* ハンバーガーメニュー カテゴリに記事がなかったとき リンク無 */
+.hamburgermenu-nav ul li span {
+  display: block;
+  width: 100%;
+  font-size: 15px;
+  box-sizing: border-box;
+  color:#a9a9a9;
+  text-decoration: none;
+  padding: 9px 15px 10px 0;
+  position: relative;
+}
+

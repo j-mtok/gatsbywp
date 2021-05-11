@@ -1,9 +1,14 @@
 import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
+import { Category } from "./Category"
 
 export const Nav = (props) => {
     // Graphqlの定義
     const { allWordpressCategory } = useStaticQuery(categoryQuery);
+    // 子カテゴリの除去
+    const categories = allWordpressCategory.nodes.filter((category) => {
+        return category.wordpress_parent == 0
+    })    
 
     return(
         <div>
@@ -12,12 +17,8 @@ export const Nav = (props) => {
                     <li>
                         <Link to="/">HOME</Link>
                     </li>
-                    {allWordpressCategory.nodes.map(( category ) => (
-                        <li key={category.wordpress_id}>
-                            <Link to={`/categories/${category.slug}`}>
-                                {category.name}
-                            </Link>
-                        </li>
+                    {categories.map(( category ) => (
+                        <Category category={category} />
                     ))}
                 </ul>
             </nav>
